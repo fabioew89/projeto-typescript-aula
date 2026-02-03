@@ -67,6 +67,39 @@ class LeituraService {
 
         await this.leituraRepository.remove(leitura);
     }
+
+    async listarLeiturasPorArea(areaId: string) {
+        const rows = await this.leituraRepository
+            .createQueryBuilder("leitura")
+            .innerJoin("leitura.sensor", "sensor")
+            .innerJoin("sensor.area", "area")
+            .where("area.id = :areaId", { areaId })
+            .orderBy("leitura.dataHora", "ASC")
+            .getMany();
+
+        const labels: string[] = [];
+        const temperatura: number[] = [];
+        const umidade: number[] = [];
+
+        for (const leitura of rows) {
+            labels.push(
+            new Date(leitura.dataHora).toLocaleTimeString("pt-BR", {
+                hour: "2-digit",
+                minute: "2-digit",
+            })
+            );
+
+            temperatura.push(leitura.temperatura);
+            umidade.push(leitura.umidade);
+        }
+
+        return {
+            labels,
+            temperatura,
+            umidade,
+        };
+    }
+
 }
 
 export default LeituraService;

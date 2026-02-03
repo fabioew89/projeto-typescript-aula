@@ -6,11 +6,12 @@ class AreaService {
     private areaRepository = appDataSource.getRepository(Area);
 
     public async findAll(): Promise<Area[]> {
-        return await this.areaRepository.find();
+        return await this.areaRepository.find({ relations: ['sensores'] });
     }
 
     public async findById(id: string): Promise<Area> {
-        const area = await this.areaRepository.findOneBy({ id });
+        id = id.trim()
+        const area = await this.areaRepository.findOne({ where: { id }, relations: ['sensores'] });
         if (!area) {
             throw new AppError(404, "Área não encontrada");
         }
@@ -25,37 +26,53 @@ class AreaService {
 
 
     async buscarLeiturasDaArea(areaId: string) {
-    return await this.areaRepository.findOne({
-        where: { id: areaId },
-        relations: ['sensores', 'sensores.leituras'],
-        order: {
-        sensores: {
-            leituras: {
-            dataHora: 'ASC'
+        return await this.areaRepository.findOne({
+            where: { id: areaId },
+            relations: ['sensores', 'sensores'],
+            order: {
+            sensores: {
+                leituras: {
+                dataHora: 'ASC'
+                }
             }
+            }
+        });
+    }
+
+    async contarSensorPorArea(id: string) {
+        id = id.trim()
+        const area = await this.areaRepository.findOne({ where: { id }, relations: ['sensores'] });
+        console.log(area)
+        if (!area) {
+            throw new AppError(404, "Área não encontrada");
         }
-        }
-    });
+
+        const ativos = area.sensores.filter(s => s.status == 'Ativo').length;
+        return {
+                total: area.sensores.length,
+                ativos,
+                inativos: area.sensores.length - ativos
+            };
     }
 
     public async findLeiturasByArea(areaId: string) {
-    // Primeiro, verificamos se a área existe, buscando por area
-    const area = await this.areaRepository.findOne({
-        where: { id: areaId },
-        relations: {
-            sensores: {
-                leituras: true
+        // Primeiro, verificamos se a área existe, buscando por area
+        const area = await this.areaRepository.findOne({
+            where: { id: areaId },
+            relations: {
+                sensores: {
+                    leituras: true
+                }
             }
+        });
+
+        if (!area) {
+            throw new AppError(404, "Área não encontrada");
         }
-    });
 
-    if (!area) {
-        throw new AppError(404, "Área não encontrada");
-    }
+        const todasAsLeituras = area.sensores.flatMap(sensor => sensor.leituras);
 
-    const todasAsLeituras = area.sensores.flatMap(sensor => sensor.leituras);
-
-    return todasAsLeituras;
+        return todasAsLeituras;
     }
 
     public async update(id: string, data: Partial<Area>): Promise<Area> {

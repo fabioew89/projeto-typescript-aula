@@ -833,3 +833,37 @@
 {"level":"error","message":"Sensor com este Serial Number já cadastrado! - /api/sensors - ::1 "}
 {"level":"error","message":"Leitura não encontrada - /api/leitura/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
 {"level":"error","message":"Leitura não encontrada - /api/leitura/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Token inválido - /api/refresh - ::1 "}
+{"level":"error","message":"Credênciais Inválidas - /api/login - ::1 "}
+{"level":"error","message":"jwt must be provided - /api/refresh - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Relation with property path sensor in entity was not found. - /api/area/leituras/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Token Inválido! - /api/area - ::1 "}
+{"level":"error","message":"Property \"sensor\" was not found in \"Area\". Make sure your query is correct. - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Property \"sensor\" was not found in \"Area\". Make sure your query is correct. - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Property \"sensor\" was not found in \"Area\". Make sure your query is correct. - /api/area - ::1 "}
+{"level":"error","message":"Property \"sensor\" was not found in \"Area\". Make sure your query is correct. - /api/area - ::1 "}
+{"level":"error","message":"invalid input syntax for type uuid: \"0d3edf4-0d99-4f3d-a3b8-fa089f414fd0\" - /api/area/0d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"invalid input syntax for type uuid: \"0d3edf4-0d99-4f3d-a3b8-fa089f414fd0\" - /api/area/0d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"invalid input syntax for type uuid: \"0d3edf4-0d99-4f3d-a3b8-fa089f414fd0\" - /api/area/0d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"invalid input syntax for type uuid: \"0d3edf4-0d99-4f3d-a3b8-fa089f414fd0\" - /api/area/0d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filter') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'trim') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'trim') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'trim') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'trim') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}
+{"level":"error","message":"Cannot read properties of undefined (reading 'trim') - /api/area/sensor/90d3edf4-0d99-4f3d-a3b8-fa089f414fd0 - ::1 "}

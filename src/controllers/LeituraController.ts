@@ -37,4 +37,16 @@ export default class LeituraController {
         await this.leituraService.delete(id as string);
         res.status(204).json({ status: "Leitura deletada" });
     }
+
+    public async listarLeiturasPorArea(
+        req: Request,
+        res: Response
+        ) {
+        const { areaId } = req.params;
+        const limit = Number(req.query.limit ?? 50);
+
+        const leituras = await this.leituraService.listarLeiturasPorArea(areaId as string);
+
+        return res.json(leituras);
+    }
 }

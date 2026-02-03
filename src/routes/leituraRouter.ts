@@ -13,5 +13,6 @@ leituraRoutes.get("/leitura", (req, res) => leituraController.findAll(req, res))
 leituraRoutes.get("/leitura/:id", (req, res) => leituraController.findById(req, res));
 leituraRoutes.put("/leitura/:id",  (req, res) => leituraController.update(req, res));
 leituraRoutes.delete("/leitura/:id", (req, res) => leituraController.delete(req, res));
+leituraRoutes.get("/leitura/area/:areaId", (req, res) => leituraController.listarLeiturasPorArea(req, res));
 
 export default leituraRoutes;

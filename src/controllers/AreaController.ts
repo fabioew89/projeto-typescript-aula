@@ -42,4 +42,12 @@ export default class AreaController {
         await this.areaService.delete(id as string);
         res.status(204).send();
     }
+
+    public async sensoresAtivos(req: Request, res: Response) {
+
+        const { id } = req.params;
+        const result = await this.areaService.contarSensorPorArea(id as string);
+        res.status(200).json(result)
+
+    }
 }

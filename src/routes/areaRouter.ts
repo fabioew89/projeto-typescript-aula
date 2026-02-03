@@ -14,5 +14,5 @@ areaRoutes.get("/area", (req, res) => areaController.findAll(req, res));
 areaRoutes.get("/area/:id", (req, res) => areaController.findById(req, res));
 areaRoutes.put("/area/:id", (req, res) => areaController.update(req, res));
 areaRoutes.delete("/area/:id", (req, res) => areaController.delete(req, res));
-areaRoutes.get("/area/leituras/:id", (req, res) => areaController.getLeituras(req, res));
+areaRoutes.get("/area/sensor/:id", (req, res) => areaController.sensoresAtivos(req, res));
 export default areaRoutes;
