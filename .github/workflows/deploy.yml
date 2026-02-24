@@ -16,6 +16,7 @@ jobs:
       - name: 🔄 Restart Docker
         run: |
           sudo /usr/local/bin/docker-restart.sh
+          sleep 10
 
       - name: 🔐 Login no GitHub Container Registry
         run: |
