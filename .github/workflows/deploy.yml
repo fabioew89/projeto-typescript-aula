@@ -18,10 +18,10 @@ jobs:
           echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: 📂 Debug
-              run: |
-                pwd
-                ls -la
-                find . -name "Dockerfile" 2>/dev/null
+        run: |
+          pwd
+          ls -la
+          find . -name "Dockerfile" 2>/dev/null
 
       - name: 🏗️ Build da imagem
         run: |
