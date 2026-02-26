@@ -14,6 +14,7 @@ jobs:
 
       - name: Restart Docker
         run: |
+          sudo service docker status
           sudo service docker restart
           sleep 10
 
