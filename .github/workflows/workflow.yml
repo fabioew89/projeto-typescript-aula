@@ -2,48 +2,47 @@ name: CI/CD - Pipeline - INDT
 
 on:
   push:
-    braches:
+    branches:
       - main
 
 jobs:
   build-and-deploy:
-  runs-on: self-hosted
+    runs-on: self-hosted
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
 
-  steps:
-    - name: Checkout do Código
-      uses: action/checkout@v4
-  
-    - name: Restart Docker
-      run: |
-          sudo usr/local/bin/docker-restart.sh
+      - name: Restart Docker
+        run: |
+          sudo /usr/local/bin/docker-restart.sh
           sleep 10
-    
-    - name: Login no Github container register
-      run: |
-          echo "ADVACM6TUOV26QQW5KV6BOLJT6K6Q" | docker login ghcr.io -u ${{ github.actor }} --passworld-stdin
-    
-    - name: Remover Container antigo
-      run: | 
-            docker compose down || true
-    
-    - name: buil da imagem
-      run: |
-            docker build -t ghcr.io/fabioew89/projeto_indt:latest
-    
-    - name: push da imagem
-      run: |
-            docker push ghcr.io/fabioew89/projeto_indt:latest
 
-    - name: Cria o .env na VM
-      run: |
-        cat > .env << EOF
-        DB_HOST=postgres
-        DB_PORT=${{ secrets.DB_PORT }}
-        DB_USER=${{ secrets.DB_USER }}
-        DB_PASS=${{ secrets.DB_PASS }}
-        DB_NAME=${{ secrets.DB_NAME }}
-        NODE_ENV=production
-        PORT=6060
-        JWT_ACCESS_SECRET=${{ secrets.JWT_ACCESS_SECRET }}
-        JWT_REFRESH_SECRET=${{ secrets.JWT_REFRESH_SECRET }}
-        EOF
+      - name: Login no GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Remover Container antigo
+        run: | 
+          docker compose down || true
+
+      - name: Build da imagem
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/projeto_indt:latest .
+
+      - name: Push da imagem
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/projeto_indt:latest
+
+      - name: Cria o .env na VM
+        run: |
+          cat > .env << EOF
+          DB_HOST=postgres
+          DB_PORT=${{ secrets.DB_PORT }}
+          DB_USER=${{ secrets.DB_USER }}
+          DB_PASS=${{ secrets.DB_PASS }}
+          DB_NAME=${{ secrets.DB_NAME }}
+          NODE_ENV=production
+          PORT=6060
+          JWT_ACCESS_SECRET=${{ secrets.JWT_ACCESS_SECRET }}
+          JWT_REFRESH_SECRET=${{ secrets.JWT_REFRESH_SECRET }}
+          EOF
